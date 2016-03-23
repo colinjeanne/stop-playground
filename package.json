@@ -1,0 +1,25 @@
+{
+  "name": "stop-playground",
+  "version": "1.0.0",
+  "description": "A playground for the STOP language",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "cp ./node_modules/stop-lang/umd/stop.js ./public/.",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stop",
+    "programming",
+    "language"
+  ],
+  "author": "Colin Jeanne <colinjeanne@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colinjeanne/stop-playground.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "stop-lang": "^1.0.1"
+  },
+  "private": true
+}

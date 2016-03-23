@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+    <head>
+        <title>STOP Playground</title>
+        <meta charset="utf-8">
+        <script src="stop.js"></script>
+        <style type="text/css">
+            header {
+                text-align: center;
+            }
+            
+            section {
+                margin: 0 1em;
+            }
+            
+            #ide {
+                display: flex;
+                justify-content: center;
+            }
+            
+            #program, #stdout, #stderror, #run {
+                font-size: 150%;
+            }
+            
+            #out {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            
+            #out div {
+                white-space: pre;
+            }
+            
+            #run {
+                display: block;
+            }
+        </style>
+        <script>
+            const stopProgram = window.stopLang;
+            
+            const clearOutput = () => {
+                const stdout = document.getElementById('stdout');
+                const stderror = document.getElementById('stderror');
+                
+                stdout.textContent = '';
+                stderror.textContent = '';
+            };
+            
+            const getInstructions = () => {
+                const rawInstructions = document.getElementById('program').value;
+                return rawInstructions.split('\n');
+            };
+            
+            const realStdIn = () => window.prompt("Enter a STOP value:");
+            
+            const outputToDiv = (v, div) => {
+                const value = v + '\n';
+                console.log(value);
+                div.textContent += value;
+            };
+            
+            const realStdOut = v =>
+                outputToDiv(v, document.getElementById('stdout'));
+            
+            const realStdErr = v =>
+                outputToDiv(v, document.getElementById('stderror'));
+            
+            const runProgram = () => {
+                clearOutput();
+                
+                const instructions = getInstructions();
+                
+                try {
+                    const program = new stopProgram(instructions, realStdIn, realStdOut, realStdErr);
+                    const result = program.execute();
+                    
+                    if (typeof result !== 'undefined') {
+                        realStdOut(result);
+                    }
+                } catch (e) {
+                    realStdErr(e.toString());
+                }
+            };
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('run').addEventListener('click', runProgram);
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>STOP Playground</h1>
+        </header>
+        <section id="ide">
+            <section id="dev">
+                <h2>Program</h2>
+                <textarea
+                    autofocus
+                    cols="40"
+                    id="program"
+                    rows="20"></textarea>
+                <button id="run" type="button">Run</button>
+            </section>
+            <section id="out">
+                <section>
+                    <h2>Out</h2>
+                    <div id="stdout"></div>
+                </section>
+                <section>
+                    <h2>Error</h2>
+                    <div id="stderror"></div>
+                </section>
+            </section>
+        </section>
+    </body>
+</html>
+        
