@@ -1,6 +1,6 @@
 {
   "name": "stop-playground",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A playground for the STOP language",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "stop-lang": "^1.0.1"
+    "stop-lang": "^2.0.0"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^3.4.0"
+  }
 }

@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    overflow-y: hidden;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+}
+
+section {
+    margin: 0 1em;
+}
+
+#dev {
+    display: flex;
+    flex-direction: column;
+}
+
+#ide {
+    display: flex;
+    flex-grow: 1;
+    margin-bottom: 2em;
+    max-height: 90%;
+}
+
+#editToolbar > * {
+    font-size: 150%;
+}
+
+#program, #stdout, #stderror, #result, button, #editor, .line {
+    font-size: 150%;
+}
+
+#editor {
+    border: thin solid black;
+    cursor: text;
+    flex-grow: 1;
+    margin: 0;
+    overflow-y: scroll;
+    width: 40em;
+}
+
+#out {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+#out div {
+    white-space: pre-wrap;
+}
+
+#editToolbar, #debugToolbar {
+    margin: 0;
+}
+
+#programStateData {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+.inactive {
+    display: none;
+}
+
+.line {
+    display: flex;
+}
+
+.ci {
+    background-color: rgba(0, 200, 255, 0.3)
+}
+
+.ip {
+    background-color: rgba(255, 128, 180, 0.3)
+}
+
+.breakpoint {
+    border: thin solid grey;
+    cursor: pointer;
+    height: 1em;
+    width: 1em;
+}
+
+.breakpoint:hover, .breakpoint.enabled:hover {
+    background-color: rgba(255, 0, 0, 0.25);
+    border: thin solid grey;
+    height: 1em;
+    width: 1em;
+}
+
+.breakpoint.enabled {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.text {
+    background-color: transparent;
+    border: none;
+    flex-grow: 1;
+    font-size: 80%;
+    margin-left: 0.5em;
+}
+
+.text:disabled {
+    color: black;
+    cursor: text;
+}
